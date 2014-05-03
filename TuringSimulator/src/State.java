@@ -7,49 +7,11 @@ public class State {
 	private boolean halt;
 	
 	public State(int number) {
-		this.setNumber(number);
+		this.number = number;
 	}
 	
-	public void addTransition(int nextState, int writeSymbol, String direction) {
-		transitions.add(new Transition(nextState, writeSymbol, direction));
-	}
-	
-	private class Transition {
-		
-		private int nextState;
-		private int writeSymbol;
-		private String direction;
-		
-		public Transition(int nextState, int writeSymbol, String direction) {
-			this.setNextState(nextState);
-			this.setWriteSymbol(writeSymbol);
-			this.setDirection(direction);
-		}
-
-		public int getNextState() {
-			return nextState;
-		}
-
-		public void setNextState(int nextState) {
-			this.nextState = nextState;
-		}
-
-		public int getWriteSymbol() {
-			return writeSymbol;
-		}
-
-		public void setWriteSymbol(int writeSymbol) {
-			this.writeSymbol = writeSymbol;
-		}
-
-		public String getDirection() {
-			return direction;
-		}
-
-		public void setDirection(String direction) {
-			this.direction = direction;
-		}
-		
+	public void addTransition(int input, int nextState, int writeSymbol, String direction) {
+		transitions.add(new Transition(input, nextState, writeSymbol, direction));
 	}
 
 	public ArrayList<Transition> getTransitions() {
