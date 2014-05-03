@@ -38,4 +38,8 @@ public class State {
 		this.number = number;
 	}
 	
+	public String toString() {
+		return "" + number;
+	}
+	
 }

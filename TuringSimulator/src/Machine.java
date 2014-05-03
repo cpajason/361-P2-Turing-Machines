@@ -13,9 +13,9 @@ public class Machine {
 	
 	public Machine(File file) throws FileNotFoundException {
 		Scanner scan = new Scanner(file);
-		numStates = Integer.parseInt(scan.nextLine());
+		numStates = Integer.parseInt(scan.nextLine().trim());
 		states = new State[numStates];
-		numSymbols = Integer.parseInt(scan.nextLine());
+		numSymbols = Integer.parseInt(scan.nextLine().trim());
 		
 		for (int currState = 0; currState < numStates - 1; currState++) {
 			states[currState] = new State(currState);
@@ -51,8 +51,10 @@ public class Machine {
 		int position = 0;
 		State currState = states[position];
 		Transition currTrans = currState.getTransitions().get(tape.get(position));
+		System.out.println("" + currState.getNumber());
 		
 		while (!currState.isHalt()) {
+			
 			int writeSymbol = currTrans.getWriteSymbol();
 			String direction = currTrans.getDirection();
 			
@@ -79,15 +81,17 @@ public class Machine {
 			// move to the next state
 			currState = states[currTrans.getNextState()];
 			if (!currState.isHalt()) {
-				// if we a legitimate input symbol to read to the right of the head, base the new transition off it
-				if (tape.size() > position + 1) {
-					currTrans = currState.getTransitions().get(tape.get(position + 1));
+				// if we have a legitimate input symbol to read to the right of the head, base the new transition off it
+				if (tape.size() > position) {
+					currTrans = currState.getTransitions().get(tape.get(position));
 				}
 				// otherwise, we know it's blank (0), so get the blank transitions
 				else {
 					currTrans = currState.getTransitions().get(0);
 				}
 			}
+			
+			System.out.println("" + currState.getNumber());
 		}
 		System.out.println(tape);
 	}
