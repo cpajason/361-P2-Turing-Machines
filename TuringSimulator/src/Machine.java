@@ -20,7 +20,7 @@ public class Machine {
 		for (int currState = 0; currState < numStates - 1; currState++) {
 			states[currState] = new State(currState);
 			states[currState].setHalt(false);
-			for (int trans = 0; trans < numSymbols; trans++) {
+			for (int trans = 0; trans < numSymbols + 1; trans++) {
 				StringTokenizer st = new StringTokenizer(scan.nextLine(), ",");
 				while (st.hasMoreTokens()) {
 					int nextState = Integer.parseInt(st.nextToken());
