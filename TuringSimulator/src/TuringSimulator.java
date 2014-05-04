@@ -5,8 +5,8 @@ public class TuringSimulator {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		Machine m = new Machine(new File(args[0]));
-		m.run();
+		int score = m.run();
+		System.out.println("Score: " + score);
 	}
 
 }
- 

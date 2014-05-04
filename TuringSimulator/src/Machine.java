@@ -40,7 +40,7 @@ public class Machine {
 		}
 	}
 	
-	public void run() {
+	public int run() {
 		
 		// convert input to an ArrayList for infinite 2-way tape
 		ArrayList<Integer> tape = new ArrayList<Integer>();
@@ -81,19 +81,17 @@ public class Machine {
 			// move to the next state
 			currState = states[currTrans.getNextState()];
 			if (!currState.isHalt()) {
-				// if we have a legitimate input symbol to read to the right of the head, base the new transition off it
-				if (tape.size() > position) {
-					currTrans = currState.getTransitions().get(tape.get(position));
-				}
-				// otherwise, we know it's blank (0), so get the blank transitions
-				else {
-					currTrans = currState.getTransitions().get(0);
-				}
+				currTrans = currState.getTransitions().get(tape.get(position));
 			}
 			
 			System.out.println("" + currState.getNumber());
 		}
-		System.out.println(tape);
+		int score = 0;
+		for (int i = 0; i < tape.size(); i++) {
+			score += tape.get(i);
+		}
+		
+		return score;
 	}
 	
 }
