@@ -13,15 +13,20 @@ public class Machine {
 	
 	public Machine(File file) throws FileNotFoundException {
 		Scanner scan = new Scanner(file);
+		
+		// Number of states
 		numStates = Integer.parseInt(scan.nextLine().trim());
 		states = new State[numStates];
+		// Number of symbols
 		numSymbols = Integer.parseInt(scan.nextLine().trim());
 		
+		// Everything else is state transitions
 		for (int currState = 0; currState < numStates - 1; currState++) {
 			states[currState] = new State(currState);
 			states[currState].setHalt(false);
 			for (int trans = 0; trans < numSymbols + 1; trans++) {
-				StringTokenizer st = new StringTokenizer(scan.nextLine(), ",");
+				// Transition format: nextState,writeSymbol (currSymbol and currState come from the line #)
+			  StringTokenizer st = new StringTokenizer(scan.nextLine(), ",");
 				while (st.hasMoreTokens()) {
 					int nextState = Integer.parseInt(st.nextToken());
 					int writeSymbol = Integer.parseInt(st.nextToken());
@@ -30,18 +35,19 @@ public class Machine {
 				}
 			}
 		}
+		// Set up the accept state
 		states[numStates - 1] = new State(numStates - 1);
 		states[numStates - 1].setHalt(true);
 		if (scan.hasNextLine()) {
 			input = scan.nextLine().trim();
 		}
 		else {
+		  // Set to 0, to ensure the tape has somewhere for the tape head to point
 			input = "0";
 		}
 	}
 	
-	public int run() {
-		
+	public ArrayList<Integer> run() {
 		// convert input to an ArrayList for infinite 2-way tape
 		ArrayList<Integer> tape = new ArrayList<Integer>();
 		for (int i = 0; i < input.length(); i++) {
@@ -51,7 +57,7 @@ public class Machine {
 		int position = 0;
 		State currState = states[position];
 		Transition currTrans = currState.getTransitions().get(tape.get(position));
-		System.out.println("" + currState.getNumber());
+		//System.out.println("" + currState.getNumber());
 		
 		while (!currState.isHalt()) {
 			
@@ -84,14 +90,10 @@ public class Machine {
 				currTrans = currState.getTransitions().get(tape.get(position));
 			}
 			
-			System.out.println("" + currState.getNumber());
-		}
-		int score = 0;
-		for (int i = 0; i < tape.size(); i++) {
-			score += tape.get(i);
+			//System.out.println("" + currState.getNumber());
 		}
 		
-		return score;
+		return tape;
 	}
 	
 }
