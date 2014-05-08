@@ -107,8 +107,6 @@ public class Machine {
 			if (!currState.isHalt()) {
 				currTrans = currState.getTransitions().get(tape.get(position));
 			}
-			
-			//System.out.println("" + currState.getNumber());
 		}
 		
 		return tape;

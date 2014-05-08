@@ -21,13 +21,10 @@ public class TuringSimulator {
 		Machine m = new Machine(new File(args[0]));
 		ArrayList<Integer> tape = m.run();
 		
-		int score = 0;
 		for (int i = 0; i < tape.size(); i++) {
 			int cellContents = tape.get(i);
-			System.out.print(cellContents);
-			score += cellContents;
+			System.out.println(cellContents);
 		}
-    System.out.println("\nScore: " + score);
 	}
 
 }
