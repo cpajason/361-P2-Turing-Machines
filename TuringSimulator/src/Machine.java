@@ -4,6 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+/**
+ * This is the Machine class for a Turing Machine Simulator.
+ * It is meant to encapsulate a turing machine itself with a
+ * set of states, input and tape alphabets, and transition
+ * functions.
+ * 
+ * @author Jason Allen
+ * @author Nathan Henninger
+ * @author Matt Weaver
+ *
+ */
 public class Machine {
 	
 	State[] states;
@@ -11,6 +22,7 @@ public class Machine {
 	String input;
 	int numSymbols;
 	
+	// Constructor
 	public Machine(File file) throws FileNotFoundException {
 		Scanner scan = new Scanner(file);
 		
@@ -47,6 +59,12 @@ public class Machine {
 		}
 	}
 	
+	/**
+	 * Simulate execution of the Turing Machine.
+	 * 
+	 * @return tape An ArrayList<Integer> representation of the tape after
+	 * the machine halts.
+	 */
 	public ArrayList<Integer> run() {
 		// convert input to an ArrayList for infinite 2-way tape
 		ArrayList<Integer> tape = new ArrayList<Integer>();
