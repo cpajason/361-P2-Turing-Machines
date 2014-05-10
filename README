@@ -9,7 +9,7 @@
 
 OVERVIEW:
 
- Concisely explain what the program does.
+ This program takes an input file and parses it in order to create a "Busy Beaver" Turing Machine from the contents.  It then simulates the constructed Turing Machine and prints its output.
 
 
 INCLUDED FILES:
@@ -28,6 +28,10 @@ BUILDING AND RUNNING:
 
 PROGRAM DESIGN:
 
+ The program was designed from the top down.  The sample input gave a visual demonstration showing which lines of input correspond to instance data.  Then we decided which of the seven-tuple items required their own object and which would fit in primitive types.
+ 
+ The Machine is the whole thing containing an array of states, each of which contain an ArrayList of transitions.
+
  Give a design overview of the program. Explain the main
  concepts. Explain the main responsibilities of each class.
  Explain how the classes work together to achieve the program goals.
@@ -39,10 +43,9 @@ PROGRAM DESIGN:
 
 TESTING:
 
- How did you test your program to be sure it works and meets all of the
- requirements? Can your program handle bad input? Is your program 
- idiot-proof? How do you know? What are the known issues / bugs
- remaining in your program?
+ Testing was performed using sample input provided by Dr. Sherman and a machine adapted from the textbook.
+ 
+ The program will ignore a tape direction that is not "L" or "R," but it cannot detect a non-halting Turing Machine or an incorrectly encoded one such as transitions to non-existant states or excessive symbols.  This means the program is not protected against idiot or malicious users.
 
 
 DISCUSSION:
