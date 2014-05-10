@@ -23,7 +23,7 @@ INCLUDED FILES:
 BUILDING AND RUNNING:
 
  $ javac *.java
- $ java TuringSimulator.java
+ $ java TuringSimulator TuringMachineFile
  
 
 PROGRAM DESIGN:
