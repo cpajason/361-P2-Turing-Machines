@@ -18,7 +18,12 @@ public class TuringSimulator {
 		  System.exit(0);
 		}
 	  
+		try {
 		Machine m = new Machine(new File(args[0]));
+		}
+		catch (Exception e){
+			System.err.println("Could not open file.");
+		}
 		ArrayList<Integer> tape = m.run();
 		
 		for (int i = 0; i < tape.size(); i++) {

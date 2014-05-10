@@ -79,7 +79,8 @@ public class Transition {
 		 * @param direction A string representing left or right.
 		 */
 		public void setDirection(String direction) {
-			this.direction = direction; // TODO could use some input validation
+			if (direction.equals("L") || direction.equals("R"))
+				this.direction = direction;
 		}
 
 		/**
