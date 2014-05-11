@@ -17,6 +17,7 @@ INCLUDED FILES:
  Machine.java - Contains the source code to building a Turing machine from an input file.
  State.java - Contains the source code to building a State for use by the Machine.
  Transition.java - Contains the source code to building a Transition for use by the State.
+ Tape.java - Contains the source code to represent the Tape for use by Machine.java
  bb.txt - Contains our 4 state Busy Beaver Turing machine.
  README - The file you are currently reading.  Included for documentation purposes.
 
