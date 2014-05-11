@@ -18,17 +18,21 @@ public class TuringSimulator {
 		  System.exit(0);
 		}
 	  
+		Machine m = null;
 		try {
-		Machine m = new Machine(new File(args[0]));
+		m = new Machine(new File(args[0]));
 		}
 		catch (Exception e){
 			System.err.println("Could not open file.");
+			System.exit(1);
 		}
+		
+		// Since we got this far, we can safely assume m != null
 		ArrayList<Integer> tape = m.run();
 		
 		for (int i = 0; i < tape.size(); i++) {
 			int cellContents = tape.get(i);
-			System.out.println(cellContents);
+			System.out.print(cellContents);
 		}
 	}
 
