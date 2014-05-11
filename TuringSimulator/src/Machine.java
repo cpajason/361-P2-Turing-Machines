@@ -65,48 +65,34 @@ public class Machine {
 	 * @return tape An ArrayList<Integer> representation of the tape after
 	 * the machine halts.
 	 */
-	public ArrayList<Integer> run() {
+	public Tape run() {
 		// convert input to an ArrayList for infinite 2-way tape
-		ArrayList<Integer> tape = new ArrayList<Integer>();
-		for (int i = 0; i < input.length(); i++) {
-			tape.add(Character.getNumericValue(input.charAt(i)));
-		}
+		Tape tape = new Tape(input);
 		
-		int position = 0;
-		State currState = states[position];
-		Transition currTrans = currState.getTransitions().get(tape.get(position));
-		//System.out.println("" + currState.getNumber());
+		State currState = states[0];
+		Transition currTrans = currState.getTransitions().get(tape.get());
 		
 		while (!currState.isHalt()) {
-			
 			int writeSymbol = currTrans.getWriteSymbol();
 			String direction = currTrans.getDirection();
 			
 			// write the symbol for the transition
-			tape.set(position, new Integer(writeSymbol));
+			tape.set(writeSymbol);
 			
 			// move L or R by changing the position
 			if (direction.equals("L")) {
-				position -= 1;
+				tape.left();
 			}
 			else {
-				position += 1;
-			}
-			
-			// if we are off the known tape, we must add a blank spot on the tape (0 in this program)
-			if (position < 0) {
-				tape.add(0, new Integer(0));
-				position = 0;
-			}
-			if (position >= tape.size()) {
-				tape.add(new Integer(0));
+				tape.right();
 			}
 			
 			// move to the next state
 			currState = states[currTrans.getNextState()];
 			if (!currState.isHalt()) {
-				currTrans = currState.getTransitions().get(tape.get(position));
+				currTrans = currState.getTransitions().get(tape.get());
 			}
+			//System.out.println("Loop");
 		}
 		
 		return tape;

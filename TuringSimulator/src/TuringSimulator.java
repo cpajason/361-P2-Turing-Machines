@@ -28,11 +28,12 @@ public class TuringSimulator {
 		}
 		
 		// Since we got this far, we can safely assume m != null
-		ArrayList<Integer> tape = m.run();
-		
-		for (int i = 0; i < tape.size(); i++) {
-			int cellContents = tape.get(i);
+		Tape tape = m.run();
+		System.out.println("run() complete.");
+		while (tape.hasRight()) {
+			int cellContents = tape.get();
 			System.out.print(cellContents);
+			tape.right();
 		}
 		System.out.println();
 	}
