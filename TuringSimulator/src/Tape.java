@@ -81,7 +81,6 @@ public class Tape {
   
   
   /** Internal class representing the cells on the tape
-   * @author mhweaver
    *
    */
   private class Cell {
