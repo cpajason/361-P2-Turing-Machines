@@ -14,16 +14,21 @@ OVERVIEW:
 
 INCLUDED FILES:
 
- Machine.java - Contains the source code to building a Busy Beaver from an input file.
+ Machine.java - Contains the source code to building a Turing machine from an input file.
  State.java - Contains the source code to building a State for use by the Machine.
  Transition.java - Contains the source code to building a Transition for use by the State.
+ bb.txt - Contains our 4 state Busy Beaver Turing machine.
  README - The file you are currently reading.  Included for documentation purposes.
 
 
 BUILDING AND RUNNING:
 
- $ javac *.java
- $ java TuringSimulator TuringMachineFile
+ To build:
+  javac *.java
+  
+To run:
+  java TuringSimulator filename
+  where filename is the name of the file describing the Turing machine to run and its initial input.
  
 
 PROGRAM DESIGN:
