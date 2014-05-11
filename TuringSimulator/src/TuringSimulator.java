@@ -29,17 +29,8 @@ public class TuringSimulator {
 		
 		// Since we got this far, we can safely assume m != null
 		Tape tape = m.run();
-		System.out.println("run() complete.");
-		tape.reset();
-		int score = 0;
-		while (tape.hasRight()) {
-			int cellContents = tape.get();
-			score += cellContents;
-			System.out.print(cellContents);
-			tape.right();
-		}
+		tape.print();
 		System.out.println();
-		System.out.println("score:" + score);
 	}
 
 }

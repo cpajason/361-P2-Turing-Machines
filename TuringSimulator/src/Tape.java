@@ -1,5 +1,6 @@
 public class Tape {
   Node curr, first, last;
+  int size = 0;
   public Tape() {
     this.curr = new Node(0);
     this.curr.l = this.curr.r = null;
@@ -20,6 +21,7 @@ public class Tape {
       this.curr.l = new Node(0);
       this.curr.l.r = this.curr;
       this.first = this.curr.l;
+      this.size++;
     }
     this.curr = this.curr.l;
   }
@@ -28,6 +30,7 @@ public class Tape {
       this.curr.r = new Node(0);
       this.curr.r.l = this.curr;
       this.last = this.curr.r;
+      this.size++;
     }
     this.curr = this.curr.r;
   }
@@ -42,6 +45,23 @@ public class Tape {
   }
   public void reset() {
     this.curr = this.first;
+  }
+  public void print() {
+    int score = 0;
+    Node init = this.curr;
+    this.reset();
+    while (this.hasRight()) {
+      int cellContents = this.get();
+      score += cellContents;
+      System.out.print(cellContents);
+      this.right();
+      if (this.curr == this.last) {
+        score += this.get();
+        System.out.print(this.get());
+      }
+    }
+    this.curr = init;
+    System.out.println("score: " + score);
   }
   
   
