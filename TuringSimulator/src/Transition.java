@@ -14,14 +14,17 @@ public class Transition {
 		private int input;
 		private int nextState;
 		private int writeSymbol;
-		private String direction;
+		private char direction;
 		
 		// Constructor
 		public Transition(int input, int nextState, int writeSymbol, String direction) {
 			this.setInput(input);
 			this.setNextState(nextState);
 			this.setWriteSymbol(writeSymbol);
-			this.setDirection(direction);
+			if (direction.length() != 0) 
+			  this.setDirection(direction.charAt(0));
+			else // Invalid direction
+			  this.setDirection('?');
 		}
 
 		/**
@@ -68,7 +71,7 @@ public class Transition {
 		 * 
 		 * @return direction A String representing left or right.
 		 */
-		public String getDirection() {
+		public char getDirection() {
 			return direction;
 		}
 
@@ -78,8 +81,8 @@ public class Transition {
 		 * 
 		 * @param direction A string representing left or right.
 		 */
-		public void setDirection(String direction) {
-			if (direction.equals("L") || direction.equals("R"))
+		public void setDirection(char direction) {
+			if (direction == 'L' || direction == 'R')
 				this.direction = direction;
 		}
 

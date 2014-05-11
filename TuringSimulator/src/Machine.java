@@ -74,13 +74,13 @@ public class Machine {
 		
 		while (!currState.isHalt()) {
 			int writeSymbol = currTrans.getWriteSymbol();
-			String direction = currTrans.getDirection();
+		  char direction = currTrans.getDirection();
 			
 			// write the symbol for the transition
 			tape.set(writeSymbol);
 			
 			// move L or R by changing the position
-			if (direction.equals("L")) {
+			if (direction == 'L') {
 				tape.left();
 			}
 			else {
