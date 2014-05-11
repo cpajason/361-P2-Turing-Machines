@@ -34,6 +34,7 @@ public class TuringSimulator {
 			int cellContents = tape.get(i);
 			System.out.print(cellContents);
 		}
+		System.out.println();
 	}
 
 }
