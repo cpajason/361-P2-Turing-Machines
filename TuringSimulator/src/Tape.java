@@ -18,7 +18,7 @@ public class Tape {
   public void left() {
     if (this.curr.l == null) {
       this.curr.l = new Node(0);
-      this.curr.r = this.curr;
+      this.curr.l.r = this.curr;
       this.first = this.curr.l;
     }
     this.curr = this.curr.l;
@@ -26,7 +26,7 @@ public class Tape {
   public void right() {
     if (this.curr.r == null) {
       this.curr.r = new Node(0);
-      this.curr.l = this.curr;
+      this.curr.r.l = this.curr;
       this.last = this.curr.r;
     }
     this.curr = this.curr.r;
@@ -34,13 +34,14 @@ public class Tape {
   public int get() {
     return this.curr.i;
   }
-  public int set(int i) {
-    int old = this.curr.i;
+  public void set(int i) {
     this.curr.i = i;
-    return old;
   }
   public boolean hasRight() {
-    return this.curr.r == null;
+    return this.curr.r != null;
+  }
+  public void reset() {
+    this.curr = this.first;
   }
   
   
