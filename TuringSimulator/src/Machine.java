@@ -62,7 +62,7 @@ public class Machine {
 	/**
 	 * Simulate execution of the Turing Machine.
 	 * 
-	 * @return tape An ArrayList<Integer> representation of the tape after
+	 * @return tape A tape object representing the tape after
 	 * the machine halts.
 	 */
 	public Tape run() {
