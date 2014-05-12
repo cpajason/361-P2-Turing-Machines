@@ -69,7 +69,7 @@ public class Transition {
 		 * Returns the direction to move on the tape during the
 		 * execution of this transition, either "L" or "R."
 		 * 
-		 * @return direction A String representing left or right.
+		 * @return direction A char representing left or right.
 		 */
 		public char getDirection() {
 			return direction;
@@ -79,7 +79,7 @@ public class Transition {
 		 * Sets the direction to move on the tape during the
 		 * execution of this transition, either "L" or "R."
 		 * 
-		 * @param direction A string representing left or right.
+		 * @param direction A char representing left or right.
 		 */
 		public void setDirection(char direction) {
 			if (direction == 'L' || direction == 'R')
